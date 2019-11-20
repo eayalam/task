@@ -10,6 +10,7 @@ import Wrapper from './components/Wrapper';
 import MeasureLayout from './components/MeasureLayout';
 import MeasureList from './Features/Measures/Measures';
 import MeasureValues from './Features/Measures/Cards';
+import MeasureChart from './components/MeasureChart'
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -40,7 +41,8 @@ const App = () => (
         <Header />
         <MeasureList label="Metrics" />
         <MeasureLayout>
-          <MeasureValues every={2000} after={getMinutesAgo(30)} />
+          <MeasureValues every={2000} after={getMinutesAgo(1)} />
+          <MeasureChart />
         </MeasureLayout>
         <ToastContainer />
       </Wrapper>
