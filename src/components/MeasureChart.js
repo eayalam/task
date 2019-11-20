@@ -1,6 +1,7 @@
 import React from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import { useSelector } from 'react-redux';
+import moment from 'moment'
 
 export default () => {
 
@@ -28,7 +29,7 @@ export default () => {
     const filtered = dataValues.filter(item => item.at === at);
 
     const output = {
-      name: at
+      name: moment(at).format('hh:mm A')
     }
 
     filtered.forEach(({metric, at, value}) => {
@@ -42,7 +43,7 @@ export default () => {
     <div> {
       data.length ?
         <LineChart width={800} height={600} data={dataSet} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-          <XAxis dataKey="at"/>
+          <XAxis dataKey="name"/>
           <YAxis />
           <CartesianGrid strokeDasharray="5 5"/>
           <Tooltip/>
