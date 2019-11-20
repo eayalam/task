@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
 
 export type Metrics = {
-  getMetrics: string[]
+  getMetrics: string[];
 };
 
 export type ApiErrorAction = {
@@ -16,16 +16,16 @@ export type MetricObject = {
   metric: string;
   value: number;
   unit: string;
-  at: number
+  at: number;
 }
 
 export type MetricListItem = {
   metric: string;
-  measurements: MetricObject[]
+  measurements: MetricObject[];
 }
 
 export type MetricList = {
-  getMultipleMeasurements: MetricListItem[]
+  getMultipleMeasurements: MetricListItem[];
 }
 
 const initialState = {

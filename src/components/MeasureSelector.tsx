@@ -10,7 +10,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { useDispatch } from 'react-redux'
 import { actions } from '../Features/Measures/reducer';
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -53,7 +52,6 @@ export default ({title, items=[]}: { title: string, items: string[] }) => {
   const classes = useStyles();
   const [currentMetric, setcurrentMetric] = React.useState<string[]>([]);
 
-
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     const items = event.target.value as string[];
     setcurrentMetric(items);
@@ -63,9 +61,8 @@ export default ({title, items=[]}: { title: string, items: string[] }) => {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">{title}</InputLabel>
+        <InputLabel>{title}</InputLabel>
         <Select
-          id="demo-mutiple-checkbox"
           multiple
           value={currentMetric}
           onChange={handleChange}
