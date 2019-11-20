@@ -9,7 +9,7 @@ import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import MeasureLayout from './components/MeasureLayout';
 import MeasureList from './Features/Measures/Measures';
-import CardMeasures from './components/CardMeasures';
+import MeasureValues from './Features/Measures/Cards';
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -26,6 +26,12 @@ const theme = createMuiTheme({
   },
 });
 
+function getMinutesAgo (minutes: number) {
+  const now = new Date();
+  const newTime = now.setMinutes( now.getMinutes() - minutes );
+  return +newTime
+}
+
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
@@ -34,7 +40,7 @@ const App = () => (
         <Header />
         <MeasureList label="Metrics" />
         <MeasureLayout>
-          <CardMeasures />
+          <MeasureValues after={getMinutesAgo(1)} />
         </MeasureLayout>
         <ToastContainer />
       </Wrapper>

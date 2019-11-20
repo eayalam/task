@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default ({name, value}: {name: string, value: number}) => {
+export default ({name, value, unit}: {name: string, value: number, unit: string}) => {
   const classes = useStyles();
 
   return (
@@ -23,7 +23,7 @@ export default ({name, value}: {name: string, value: number}) => {
           {name}
         </Typography>
         <Typography variant="h4">
-          {value}
+          {value} <Typography variant="caption"><sup> {unit} </sup></Typography>
         </Typography>
       </CardContent>
     </Card>
