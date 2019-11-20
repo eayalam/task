@@ -21,7 +21,7 @@ const getMetrics = (state: IState) => {
   return state.metrics
 };
 
-const Metrics = () => {
+const SelectorMetrics = ({label}: {label: string}) => {
   const dispatch = useDispatch();
   const { items } = useSelector(getMetrics);
 
@@ -45,15 +45,15 @@ const Metrics = () => {
 
   return (
     <div>
-      <Selector title={'Metrics'} items={items}/>
+      <Selector title={label} items={items}/>
     </div>
   );
 };
 
-export default () => {
+export default ({label}: {label: string}) => {
   return (
     <Provider value={client}>
-      <Metrics />
+      <SelectorMetrics label={label}/>
     </Provider>
   );
 };

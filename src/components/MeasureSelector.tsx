@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useDispatch } from 'react-redux'
-import { actions } from '../Features/Metrics/reducer';
+import { actions } from '../Features/Measures/reducer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
