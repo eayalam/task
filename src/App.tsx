@@ -40,7 +40,7 @@ const App = () => (
         <Header />
         <MeasureList label="Metrics" />
         <MeasureLayout>
-          <MeasureValues after={getMinutesAgo(1)} />
+          <MeasureValues every={2000} after={getMinutesAgo(30)} />
         </MeasureLayout>
         <ToastContainer />
       </Wrapper>
