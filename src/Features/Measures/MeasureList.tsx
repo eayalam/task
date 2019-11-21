@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions } from './reducer';
 import { Provider, createClient, useQuery } from 'urql';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Selector from '../../components/MeasureSelector';
+import MeasureSelector from '../../components/MeasureSelector';
 import { IState } from '../../store';
 
 const client = createClient({
@@ -45,7 +45,7 @@ const SelectorMetrics = ({label}: {label: string}) => {
 
   return (
     <div>
-      <Selector title={label} items={items}/>
+      <MeasureSelector title={label} items={items}/>
     </div>
   );
 };

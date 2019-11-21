@@ -12,20 +12,20 @@ type ChartValue = {
 
 export default () => {
   const colors = ["blue", "red", "black", "green", "purple", "teal"];
-  const data =  useSelector((state: IState) => state.metrics.values);
+  const { values, selectedItems } =  useSelector((state: IState) => state.metrics);
 
   const timestamps = new Set();
   const dataValues = [] as MetricObject[];
   let dataSource = [];
   let dataSet = [];
 
-  data.forEach((item: MetricListItem) => {
+  values.forEach((item: MetricListItem) => {
     item.measurements.forEach((measure: MetricObject) => {
       timestamps.add(measure.at);
     })
   })
 
-  data.forEach((item: MetricListItem) => {
+  values.forEach((item: MetricListItem) => {
     dataValues.push(...item.measurements);
   });
 
@@ -46,15 +46,15 @@ export default () => {
 
   return (
     <div>{
-      data.length ?
+      selectedItems.length ?
         <LineChart width={800} height={600} data={dataSource} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
-          <YAxis />
+          <YAxis domain={['auto', 'auto']} />
           <CartesianGrid strokeDasharray="5 5"/>
           <Tooltip/>
           <Legend />
 
-          {data.map((item, key) => (
+          {values.map((item, key) => (
             <Line
               key={key}
               isAnimationActive={false}
