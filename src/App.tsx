@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import MeasureLayout from './components/MeasureLayout';
-import MeasureList from './Features/Measures/Measures';
-import MeasureValues from './Features/Measures/Cards';
+import MeasureList from './Features/Measures/MeasureList';
+import MeasureValues from './Features/Measures/MeasureValues';
 import MeasureChart from './components/MeasureChart'
 
 const store = createStore();

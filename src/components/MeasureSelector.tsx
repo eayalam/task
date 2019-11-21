@@ -7,8 +7,9 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../Features/Measures/reducer';
+import { IState } from '../store'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,11 +51,10 @@ const MenuProps = {
 export default ({title, items=[]}: { title: string, items: string[] }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [currentMetric, setcurrentMetric] = React.useState<string[]>([]);
+  const { selectedItems } = useSelector((state: IState) => state.metrics);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     const items = event.target.value as string[];
-    setcurrentMetric(items);
     dispatch(actions.addItemToSelectedItems(items));
   }
 
@@ -64,7 +64,7 @@ export default ({title, items=[]}: { title: string, items: string[] }) => {
         <InputLabel>{title}</InputLabel>
         <Select
           multiple
-          value={currentMetric}
+          value={selectedItems}
           onChange={handleChange}
           input={<Input />}
           renderValue={selected => (selected as string[]).join(', ')}
@@ -74,7 +74,7 @@ export default ({title, items=[]}: { title: string, items: string[] }) => {
             items.length ?
               items.map((name: string) => (
               <MenuItem key={name} value={name}>
-                <Checkbox checked={currentMetric.indexOf(name) > -1} />
+                <Checkbox checked={selectedItems.indexOf(name) > -1} />
                 <ListItemText primary={name} />
               </MenuItem>
             ))
